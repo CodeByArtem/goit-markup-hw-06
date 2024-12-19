@@ -116,6 +116,7 @@ padding: 17px 0 }
 }
 /* navvv */
 
+/* Основной стиль для всех ссылок */
 .link {
   color: var(--NAVY-BLUE, #2E2F42);
   font-family: "Roboto";
@@ -125,27 +126,44 @@ padding: 17px 0 }
   line-height: 1.5;
   letter-spacing: 0.02em;
   padding: 24px 0;
-    display: block;
-    position: relative;
-      transition:color 250ms cubic-bezier(0.4, 0, 0.2, 1)
+  display: block;
+  position: relative;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Эффект при наведении и фокусе для всех ссылок */
 .link:hover,
 .link:focus {
   color: #404bbf;
 }
-.header .studio{color: var(--OCEAN, #404BBF);
 
-}
-.studio::after {
-content: '';
+/* Эффект для палочки на всех ссылках */
+.link::after {
+  content: '';
   position: absolute;
   display: block;
-  width: 48px;
   height: 4px;
   border-radius: 2px;
-  background-color: #404BBF;
-  margin-top: 20px;
-  bottom: -1px; }
+  background-color: transparent; /* Палочка скрыта по умолчанию */
+  bottom: 4px;
+  left: 0;
+  width: 0;
+  transition: width 250ms ease-in-out, background-color 250ms ease-in-out;
+}
+
+/* Палочка появляется при наведении на ссылку */
+.link:hover::after {
+  background-color: #404BBF; /* Появляется при наведении */
+  width: 100%;
+}
+
+/* При наведении на любую ссылку скрываем палочку на всех остальных */
+.header-list .link:hover ~ .link::after,
+.header-list .link:hover + .link::after {
+  background-color: transparent;
+  width: 0;
+}
+
   
 .heder-contat {
   font-style: normal;
