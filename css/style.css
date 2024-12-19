@@ -137,7 +137,7 @@ padding: 17px 0 }
   color: #404bbf;
 }
 
-/* Эффект для палочки на всех ссылках */
+
 .link::after {
   content: '';
   position: absolute;
