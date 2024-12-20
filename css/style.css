@@ -137,32 +137,47 @@ padding: 17px 0 }
   color: #404bbf;
 }
 
-
 .link::after {
   content: '';
   position: absolute;
-  display: block;
   height: 4px;
   border-radius: 2px;
-  background-color: transparent; /* Палочка скрыта по умолчанию */
+  background-color: transparent;
   bottom: 4px;
   left: 0;
   width: 0;
+  opacity: 0;
   transition: width 250ms ease-in-out, background-color 250ms ease-in-out;
 }
 
-/* Палочка появляется при наведении на ссылку */
-.link:hover::after {
-  background-color: #404BBF; /* Появляется при наведении */
+/* Подчеркивание первой ссылки по умолчанию */
+.link.studio::after {
   width: 100%;
+  background-color: #404bbf;
+  opacity: 1;
 }
 
-/* При наведении на любую ссылку скрываем палочку на всех остальных */
-.header-list .link:hover ~ .link::after,
-.header-list .link:hover + .link::after {
-  background-color: transparent;
+/* Подчеркивание при наведении на любую ссылку */
+.link:hover::after {
+  width: 100%;
+  background-color: #404bbf;
+  opacity: 1;
+}
+
+/* Скрытие подчеркивания первой ссылки при наведении на другую */
+.header-list:hover .link.studio::after {
+  opacity: 0;
   width: 0;
 }
+
+/* Подчеркивание остальных ссылок при наведении */
+.header-list:hover .link:hover::after {
+  width: 100%;
+  background-color: #404bbf;
+  opacity: 1;
+}
+
+
 
   
 .heder-contat {
